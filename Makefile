@@ -9,3 +9,5 @@ install:
 
 uninstall:
 	@rm -vf "$(DESTDIR)$(SYSTEM_EXTENSION_DIR)/report.bash"
+
+.PHONY: install uninstall
