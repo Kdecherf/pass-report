@@ -6,7 +6,6 @@ readonly yellow=$(tput setaf 3)
 readonly Bred=$(tput setab 1)
 
 readonly reset=$(tput sgr0)
-readonly Breset=$(tput setab 9)
 
 readonly Bold=$(tput bold)
 
@@ -106,8 +105,8 @@ _print_report() {
       format_length_indication="%-${format_length_indication_width}s"
       if [[ $length -lt 8 ]]; then
          length_indication="very short"
-         local_format_length_indication="${Bred}${format_length_indication}${Breset}"
-         local_format_password="${Bred}${format_password}${Breset}"
+         local_format_length_indication="${Bred}${format_length_indication}${reset}"
+         local_format_password="${Bred}${format_password}${reset}"
       elif [[ $length -lt 13 ]]; then
          length_indication="short"
          local_format_length_indication="${red}${format_length_indication}${reset}"
