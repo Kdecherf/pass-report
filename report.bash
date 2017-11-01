@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-readonly red='\e[0;31m'
-readonly green='\e[0;32m'
-readonly yellow='\e[0;33m'
-readonly Bred='\e[0;41m'
+readonly red=$(tput setaf 1)
+readonly green=$(tput setaf 2)
+readonly yellow=$(tput setaf 3)
+readonly Bred=$(tput setab 1)
 
-readonly reset='\e[0m'
-readonly Breset='\e[49m'
+readonly reset=$(tput sgr0)
+readonly Breset=$(tput setab 9)
 
-readonly Bold='\e[1m'
+readonly Bold=$(tput bold)
 
-readonly underline='\e[4m'
-readonly nounderline='\e[24m'
+readonly underline=$(tput smul)
+readonly nounderline=$(tput rmul)
 
 _die() {
    echo -e "${red}${Bold}Error:${reset} ${@}" >&2
