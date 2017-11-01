@@ -3,6 +3,8 @@
 A [pass](https://www.passwordstore.org) extension that reports age and length of
 passwords.
 
+![screenshot](screenshot.png)
+
 ## Description
 
 `pass report` shows the date and age of the last change of a set of passwords.
