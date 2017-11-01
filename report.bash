@@ -66,9 +66,9 @@ _cmd_report_password() {
       fi
    fi
 
-   local password_data=$(git -C "$PREFIX" blame -L 1,1 -p ${file} | sed -e 1b -e '$!d')
+   local password_data=$(git -C "$PREFIX" blame -L 1,1 -p ${file} | sed -n '1 s/^\([0-9a-f]\+\) .*$/\1/ p ; $ s/^\s\+\(.*\)$/\1/ p')
    local commit=$(echo $password_data | cut -d' ' -f1)
-   local length=$(echo $password_data | awk '{print $NF}' | wc -c)
+   local length=$(echo $password_data | cut -d' ' -f2- | wc -c)
    local date=$(git -C "$PREFIX" show --date=short --format="%cd  %cr" --no-patch $commit)
 
    _print_report "$file" "$length" "$date"
