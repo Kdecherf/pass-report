@@ -15,6 +15,9 @@ article](https://www.ssi.gouv.fr/administration/precautions-elementaires/calcule
 This tool uses `git blame` and `git show` to find the last commit editing the
 first line of a password, thus ignoring renames and reencrypts.
 
+This extension and the configuration were inspired by [this
+thread](https://lists.zx2c4.com/pipermail/password-store/2015-July/001638.html).
+
 ## Usage
 
 ```
