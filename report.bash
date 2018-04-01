@@ -45,11 +45,21 @@ cmd_report() {
 
    [ ! -d "$PREFIX/.git" ] && _die "Your password store does not use .git, can't show report"
 
-   [ -z "$file" ] && _cmd_report_all_passwords || _cmd_report_password ${file%/}
+   if [ -z "$file" ]; then
+      _cmd_report_all_passwords
+   else
+      if [ -d "${PREFIX}/${file}" ]; then
+         _cmd_report_all_passwords "$file"
+      else
+         _cmd_report_password ${file%/}
+      fi
+   fi
 }
 
 _cmd_report_all_passwords() {
-   git -C "$PREFIX" ls-tree -r --name-only HEAD | grep -E "\.gpg$" | while read filename ; do
+   pass_prefix="$1"
+
+   git -C "$PREFIX" ls-tree -r --name-only HEAD | grep "^${pass_prefix}" | grep -E "\.gpg$" | while read filename ; do
       _cmd_report_password "$filename"
    done
 }
